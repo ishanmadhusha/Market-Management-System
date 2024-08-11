@@ -1,0 +1,60 @@
+<html>
+<h1>Unit Management</h1>
+<form method="POST">
+    {%csrf_token%}
+    {{form}}
+    <input type="submit" value="save"> 
+</form>
+{{uts}}
+
+<form>
+<label>Name</label>
+<input/>
+<br>
+<button>Add</button>
+<button>Delete</button>
+</form>
+
+<label>Name Contains</label>
+<input/>
+
+<button>Search</button>
+
+<table border="1">
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>Action</th>
+</tr>
+
+{% for unit in uts %}
+<tr>
+    <td>{{unit.id}}</td>
+    <td>{{unit.name}}</td>
+    <td><button>View</button></td>
+</tr>
+{% endfor %}
+
+<tr>
+<td>1</td>
+<td>Kilogram</td>
+<td><button>View</button></td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>400g Packet</td>
+<td><button>View</button></td>
+</tr>
+
+<td>3</td>
+<td>Cup</td>
+<td><button>View</button></td>
+</tr>
+
+</table>
+
+<button>Previous</button>
+<label>1</label>
+<button>Next</button>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management</title>
+    
+</head>
+<body>
+    <h1>Order Management</h1>
+
+    <!-- Form for adding and deleting orders -->
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+
+    <!-- Search functionality -->
+    <form method="GET">
+        <label for="searchName">Name Contains</label>
+        <input type="text" id="searchName" name="searchName">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Order listing table -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Item</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in ods %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.customer }}</td>
+                    <td>{{ order.date }}</td>
+                    <td>{{ order.item }}</td> <!-- Assuming 'Item' is a property, otherwise, use the correct property name -->
+                    <td><button type="button">View</button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Pagination buttons (if needed) -->
+    <div class="pagination">
+        <button type="button">Previous</button>
+        <label>1</label>
+        <button type="button">Next</button>
+    </div>
+</body>
+</html>
